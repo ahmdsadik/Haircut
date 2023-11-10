@@ -59,6 +59,9 @@ This project is a Stylist Appointment Management System implemented with Laravel
 ## Usage
 
 - Visit the application and log in as a stylist to manage working hours.
+- Login credentials for a admin are:
+  - Email: `admin@example.com`
+  - Password: `password`
 - Clients can visit and book appointments during available time slots.
 
 ## Contributing
