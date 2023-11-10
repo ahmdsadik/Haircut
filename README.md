@@ -22,7 +22,7 @@ This project is a Stylist Appointment Management System implemented with Laravel
 2. Navigate to the project directory:
 
     ```bash
-    cd stylist-appointment-system
+    cd Haircut
     ```
 
 3. Install dependencies:
