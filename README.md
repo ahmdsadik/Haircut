@@ -16,7 +16,7 @@ This project is a Stylist Appointment Management System implemented with Laravel
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/stylist-appointment-system.git
+    git clone https://github.com/ahmedmoha2050/Haircut.git
     ```
 
 2. Navigate to the project directory:
