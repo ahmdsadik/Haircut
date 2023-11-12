@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->string('key')->unique();
             $table->string('title')->nullable();
             $table->string('content')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

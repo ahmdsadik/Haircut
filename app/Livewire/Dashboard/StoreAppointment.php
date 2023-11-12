@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Dashboard;
 
+use App\Livewire\Forms\AppointmentForm;
 use App\Models\Service;
 use App\Models\Stylist;
 use App\Models\WorkingHour;
@@ -11,9 +12,10 @@ use Livewire\Component;
 class StoreAppointment extends Component
 {
 
-    public string $customer_name, $phone;
+    public AppointmentForm $form;
 
-    public $service_id, $stylist_id, $date, $time;
+    public $time,$date;
+
 
     public $dates = [];
 
@@ -46,7 +48,7 @@ class StoreAppointment extends Component
     public function updatedDate(): void
     {
 
-        $stylistAppointments = Stylist::find($this->stylist_id)?->appointments;
+        $stylistAppointments = Stylist::find($this->form->stylist_id)?->appointments;
 
         // Get working hours for the selected day
         $fromTo = WorkingHour::where('day', Carbon::CreateFromFormat('Y-m-d l', $this->date)->format('l'))->first();
@@ -74,42 +76,25 @@ class StoreAppointment extends Component
         $this->times = $times;
     }
 
-    public function updatedServiceId(): void
+    public function updatedFormServiceId(): void
     {
-        $this->stylists = Service::find($this->service_id)?->stylists;
+        $this->stylists = Service::find($this->form->service_id)?->stylists;
     }
 
 
     public function render()
     {
-        return view('livewire.store-appointment');
+        return view('livewire.appointments.store-appointment');
     }
 
     public function save()
     {
-        $this->validate(
-            [
-                'customer_name' => 'required',
-                'phone' => 'required',
-                'date' => 'required',
-                'time' => 'required',
-                'service_id' => 'required',
-                'stylist_id' => 'required',
-            ]
-        );
+        $date = Carbon::CreateFromFormat('Y-m-d l', $this->date)->format('Y-m-d');
+        $time = Carbon::createFromFormat('h A', $this->time)->format('H:00:00');
 
-        $this->date = Carbon::CreateFromFormat('Y-m-d l', $this->date)->format('Y-m-d');
-        $this->time = Carbon::createFromFormat('h:i A', $this->time)->format('H:00:00');
+        $this->form->appointment_at = $this->date . ' ' . $this->time;
 
-        $appointment = new \App\Models\Appointment();
-        $appointment->customer_name = $this->customer_name;
-        $appointment->phone = $this->phone;
-        $appointment->appointment_at = $this->date . ' ' . $this->time;
-        $appointment->service_id = $this->service_id;
-        $appointment->stylist_id = $this->stylist_id;
-        $appointment->save();
-
-//        session()->flash('message', 'Appointment successfully created.');
+        $this->form->save();
 
         $this->redirect(route('dashboard.appointments.index'));
     }

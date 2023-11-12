@@ -9,7 +9,7 @@
 
             <div class="card-body">
                 @error('store-error')
-                    {{ $message }}
+                {{ $message }}
                 @enderror
 
                 <form action="{{ route('dashboard.services.store') }}" method="POST" enctype="multipart/form-data">
@@ -33,7 +33,8 @@
                     <div class="mb-3 row">
                         <div class="col">
                             <label for="duration" class="form-label">Service Duration</label>
-                            <input type="number" min="1" class="form-control @error('duration') invalid  @enderror" id="duration"
+                            <input type="number" min="1" class="form-control @error('duration') invalid  @enderror"
+                                   id="duration"
                                    name="duration"
                                    value="{{ old('duration') }}"
                                    placeholder="Enter service duration">
@@ -83,19 +84,19 @@
 
             </div>
         </div>
-        @endsection
+@endsection
 
 
-        @push('js')
+@push('js')
 
-            <script>
-                var loadFile = function (event) {
-                    var output = document.getElementById('output');
-                    output.src = URL.createObjectURL(event.target.files[0]);
-                    output.onload = function () {
-                        URL.revokeObjectURL(output.src) // free memory
-                    }
-                };
-            </script>
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
 
-    @endpush
+@endpush

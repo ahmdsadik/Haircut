@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Appointment\AppointmentStoreRequest;
+use App\Http\Requests\Appointment\ChangeAppointmentStatusRequest;
 use App\Models\Appointment;
 use App\Models\Service;
 use App\Models\Stylist;
@@ -52,8 +53,12 @@ class AppointmentController extends Controller
         );
     }
 
-    public function update(Request $request, Appointment $appointment)
+    public function update(ChangeAppointmentStatusRequest $request, Appointment $appointment)
     {
+
+        $appointment->update($request->validated());
+
+        return to_route('dashboard.appointments.index');
     }
 
     public function destroy(Appointment $appointment)
@@ -61,5 +66,15 @@ class AppointmentController extends Controller
         $appointment->delete();
 
         return to_route('dashboard.appointments.index');
+    }
+
+    public function changeStatus(Appointment $appointment)
+    {
+
+        return view('dashboard.appointments.change-status',
+            [
+                'appointment' => $appointment
+            ]
+        );
     }
 }

@@ -12,7 +12,8 @@
             <h5 class="card-header">Edit Service</h5>
 
             <div class="card-body">
-                <form action="{{ route('dashboard.services.update',$service) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.services.update',$service) }}" method="POST"
+                      enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -82,7 +83,7 @@
                         <div class="col w-100 h-100">
                             <div class="row">
                                 <label for="image" class="form-label">Change Service Image</label>
-                                <input type="file" accept="image/*"  onchange="loadFile(event)" class=" form-control
+                                <input type="file" accept="image/*" onchange="loadFile(event)" class=" form-control
                                    @error('image') invalid @enderror" id="image" name="image"
                                        placeholder="Enter Service Image">
                                 @error('image')<span class="mt-2 text-danger"> {{ $message }} </span> @enderror
@@ -98,19 +99,20 @@
 
             </div>
         </div>
-        @endsection
+
+@endsection
 
 
-        @push('js')
+@push('js')
 
-            <script>
-                var loadFile = function (event) {
-                    var output = document.getElementById('output');
-                    output.src = URL.createObjectURL(event.target.files[0]);
-                    output.onload = function () {
-                        URL.revokeObjectURL(output.src) // free memory
-                    }
-                };
-            </script>
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
 
-    @endpush
+@endpush

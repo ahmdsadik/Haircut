@@ -33,10 +33,6 @@ class SettingController extends Controller
         return to_route('dashboard.settings.index');
     }
 
-    public function show(Setting $setting)
-    {
-    }
-
     public function edit(Setting $setting)
     {
         $setting->load('media');

@@ -49,34 +49,34 @@ class Appointment extends Model
         });
     }
 
-    public function scopeGetTotalCountByStatus($status)
-    {
-        return Cache::rememberForever('appointments_count_by_status_' . $status, function () use ($status) {
-            return $this->where('status', $status)->count();
-        });
-    }
-
-    public function scopeGetTotalCountByStylist($stylist_id)
-    {
-        return Cache::rememberForever('appointments_count_by_stylist_' . $stylist_id, function () use ($stylist_id) {
-            return $this->where('stylist_id', $stylist_id)->count();
-        });
-    }
+//    public function scopeGetTotalCountByStatus($status)
+//    {
+//        return Cache::rememberForever('appointments_count_by_status_' . $status, function () use ($status) {
+//            return $this->where('status', $status)->count();
+//        });
+//    }
+//
+//    public function scopeGetTotalCountByStylist($stylist_id)
+//    {
+//        return Cache::rememberForever('appointments_count_by_stylist_' . $stylist_id, function () use ($stylist_id) {
+//            return $this->where('stylist_id', $stylist_id)->count();
+//        });
+//    }
 
     protected static function boot()
     {
         parent::boot();
         static::saved(function ($appointment) {
             Cache::forget('appointments_count');
-            Cache::forget('appointments_count_by_status_' . $appointment->status);
-            Cache::forget('appointments_count_by_stylist_' . $appointment->stylist_id);
+//            Cache::forget('appointments_count_by_status_' . $appointment->status->value);
+//            Cache::forget('appointments_count_by_stylist_' . $appointment->stylist_id);
         });
 
 
         static::deleted(function ($appointment) {
             Cache::forget('appointments_count');
-            Cache::forget('appointments_count_by_status_' . $appointment->status);
-            Cache::forget('appointments_count_by_stylist_' . $appointment->stylist_id);
+//            Cache::forget('appointments_count_by_status_' . $appointment->status->value);
+//            Cache::forget('appointments_count_by_stylist_' . $appointment->stylist_id);
         });
     }
 }

@@ -71,6 +71,9 @@
                                         <a class="dropdown-item"
                                            href="{{ route('dashboard.appointments.edit', $appointment ) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>Edit</a>
+                                        <a class="dropdown-item"
+                                           href="{{ route('dashboard.appointments.change-status', $appointment ) }}"><i
+                                                class="bx bx-edit-alt me-1"></i>Change Status</a>
                                         <a class="dropdown-item" href="#"
                                            onclick="event.preventDefault();document.getElementById('sp-{{ $appointment->phone }}').submit()"><i
                                                 class="bx bx-trash me-1"></i>Delete</a>

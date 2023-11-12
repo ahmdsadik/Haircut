@@ -9,15 +9,10 @@ return new class extends Migration {
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-//            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->string('customer_name');
             $table->string('phone');
             $table->foreignId('service_id')->constrained()->cascadeOnDelete();
             $table->foreignId('stylist_id')->constrained()->cascadeOnDelete();
-//            $table->time('start_time')->nullable();
-//            $table->time('end_time')->nullable();
-//            $table->date('date')->nullable();
-//            $table->time('time')->nullable();
             $table->timestamp('appointment_at')->nullable();
             $table->enum('status', [1, 2, 3, 4])->default(1)->comment('1 => scheduled, 2 => in-progress, 3 => completed, 4 => cancelled');
             $table->timestamps();

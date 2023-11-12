@@ -24,7 +24,7 @@
                             <input type="text" class="form-control @error('key') invalid  @enderror" id="key" name="key"
                                    value="{{ old('key') }}"
                                    placeholder="Enter Setting Key">
-                            <span class="mt-1 d-block text-danger">@error('key') {{ $message }}  @enderror</span>
+                            @error('key') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
 
                         <div class="col">
@@ -32,7 +32,7 @@
                             <input type="text" class="form-control @error('title') invalid  @enderror" id="title" name="title"
                                    value="{{ old('title') }}"
                                    placeholder="Enter Setting Title">
-                            <span class="mt-1 d-block text-danger">@error('title') {{ $message }}  @enderror</span>
+                            @error('title') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                                    value="{{ old('phone') }}"
                                    placeholder="Enter Setting Key">
 
-                            <span class="mt-1 d-block text-danger">@error('phone') {{ $message }}  @enderror</span>
+                            @error('phone') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
 
                         <div class="col">
@@ -52,7 +52,7 @@
                             <textarea type="text" class="form-control @error('address') invalid  @enderror"
                                        id="address" name="address"
                                        placeholder="Enter Setting Content">{{ old('address') }}</textarea>
-                            <span class="mt-1 d-block text-danger">@error('address') {{ $message }}  @enderror</span>
+                            @error('address') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                         <textarea type="text" class="form-control @error('content') invalid  @enderror"
                                   id="content" name="content"
                                   placeholder="Enter Setting Content">{{ old('content') }}</textarea>
-                        <span class="mt-1 d-block text-danger">@error('content') {{ $message }}  @enderror</span>
+                        @error('content') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                     </div>
 
 
@@ -71,7 +71,7 @@
                             <input type="file" accept="image/*"  class=" form-control @error('image') invalid @enderror"
                                    id="image" onchange="loadFile(event)" name="image"
                                    placeholder="Enter Setting Image">
-                            <span class="mt-1 d-block text-danger">@error('image') {{ $message }}  @enderror</span>
+                            @error('image') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
 
                             <div class="mt-2">
                                 <img id="output" class="img-fluid w-50 h-50"/>

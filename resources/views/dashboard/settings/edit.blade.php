@@ -14,7 +14,7 @@
             <div class="card-body">
                 @error('store-error')
                 {{ $message }}
-                @enderror
+                 @enderror
 
                 <form action="{{ route('dashboard.settings.update', $setting) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -22,56 +22,56 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="key" class="form-label">Key</label>
-                            <input type="text" class="form-control @error('key') invalid  @enderror" id="key" name="key"
+                            <input type="text" class="form-control @error('key') invalid   @enderror" id="key" name="key"
                                    value="{{ old('key', $setting->key) }}"
                                    placeholder="Enter Setting Key">
-                            <span class="mt-1 d-block text-danger">@error('key') {{ $message }}  @enderror</span>
+                            @error('key') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
 
                         <div class="col">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control @error('title') invalid  @enderror" id="title"
+                            <input type="text" class="form-control @error('title') invalid   @enderror" id="title"
                                    name="title"
                                    value="{{ old('title', $setting->title) }}"
                                    placeholder="Enter Setting Title">
-                            <span class="mt-1 d-block text-danger">@error('title') {{ $message }}  @enderror</span>
+                            @error('title') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="text" class="form-control @error('phone') invalid  @enderror" id="phone" name="phone"
+                            <input type="text" class="form-control @error('phone') invalid   @enderror" id="phone" name="phone"
                                    value="{{ old('phone', $setting->phone) }}"
                                    placeholder="Enter Setting Key">
-                            <span class="mt-1 d-block text-danger">@error('phone') {{ $message }}  @enderror</span>
+                            @error('phone') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
 
                         <div class="col">
                             <label for="address" class="form-label">Address</label>
-                            <textarea type="text" class="form-control @error('address') invalid  @enderror"
+                            <textarea type="text" class="form-control @error('address') invalid   @enderror"
                                        id="address" name="address"
                                        placeholder="Enter Setting Content">{{ old('address', $setting->address) }}</textarea>
-                            <span class="mt-1 d-block text-danger">@error('address') {{ $message }}  @enderror</span>
+                            @error('address') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea type="text" class="form-control @error('content') invalid  @enderror"
+                        <textarea type="text" class="form-control @error('content') invalid   @enderror"
                                   id="content" name="content"
                                   placeholder="Enter Setting Content">{{ old('content', $setting->content) }}</textarea>
-                        <span class="mt-1 d-block text-danger">@error('content') {{ $message }}  @enderror</span>
+                        @error('content') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
                     </div>
 
 
                     <div class="mb-3 row">
                         <div class="col">
-                            <label for="image" class="form-label">Service Image</label>
+                            <label for="image" class="form-label">Setting Image</label>
                             <input type="file" accept="image/*" onchange="loadFile(event)" class=" form-control
-                                   @error('image') invalid @enderror" id="image" name="image"
-                                   placeholder="Enter Service Image">
-                            <span class="mt-1 d-block text-danger">@error('image') {{ $message }}  @enderror</span>
+                                   @error('image') invalid  @enderror" id="image" name="image"
+                                   placeholder="Enter Setting Image">
+                            @error('image') <span class="mt-1 d-block text-danger"> {{ $message }}  </span> @enderror
 
                             @if($setting->hasMedia($setting->key))
                                 <div class="mt-2">

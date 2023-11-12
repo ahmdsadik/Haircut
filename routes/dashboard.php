@@ -39,6 +39,7 @@ Route::as('dashboard.')->middleware(['auth'])->group(function () {
     ######################## End Services Routes ##################################
 
     ######################## Start Appointment Routes ################################
+    Route::get('appointments/{appointment:customer_name}/change-status', [AppointmentController::class, 'changeStatus'])->name('appointments.change-status');
     Route::resource('appointments', AppointmentController::class)->except(['show'])->scoped(['appointment' => 'customer_name']);
     ######################## End Appointment Routes ##################################
 
@@ -50,6 +51,10 @@ Route::as('dashboard.')->middleware(['auth'])->group(function () {
     Route::resource('settings', SettingController::class)->except(['show'])->scoped(['setting' => 'key']);
     ######################## End Settings Routes ##################################
 
+//
+//    ######################## Start Test Routes ################################
+//    Route::get('/test', \App\Livewire\Dashboard\appointments::class)->name('test');
+//    ######################## End Test Routes ##################################
 
 });
 

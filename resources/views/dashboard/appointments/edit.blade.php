@@ -12,10 +12,9 @@
             <h5 class="card-header">Edit Appointment</h5>
 
             <div class="card-body">
-
-                <livewire:edit-appointment :appointment="$appointment"/>
-
+                <livewire:dashboard.edit-appointment :$appointment />
             </div>
         </div>
+
 @endsection
 
